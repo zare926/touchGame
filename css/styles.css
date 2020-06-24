@@ -11,12 +11,14 @@ body {
   margin: 16px auto;
 }
 
-#borad {
+#board {
   list-style: none;
   margin: 0 0 8px;
   padding: 10px;
   background: #fff;
   border-radius: 4px;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 #timer {
@@ -25,7 +27,7 @@ body {
   text-align: right;
 }
 
-#borad li {
+#board li {
   background: #00aaff;
   width: 40px;
   height: 40px;
@@ -35,4 +37,11 @@ body {
   line-height: 40px;
   text-align: center;
   box-shadow: 0 4px 0 #0088cc;
+}
+
+#board li.pressed{
+  background: #ccc;
+  box-shadow: none;
+  margin-top: 9px;
+  margin-bottom: 1px;
 }
