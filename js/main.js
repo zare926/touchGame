@@ -14,13 +14,17 @@
     }
     activate(num){
       this.el.classList.remove('pressed');
-      this.el.textContent =num
+      this.el.textContent = num
     }
 
     check(){
       if (currentNum === parseInt(this.el.textContent, 10)) {
         this.el.classList.add('pressed');
         currentNum++;
+
+        if (currentNum === 4 ) {
+          clearTimeout(timeoutId);
+        }
       }
     }
   }
@@ -49,12 +53,26 @@
     }
   }
 
+  function runTimer() {
+    const timer = document.getElementById('timer');
+    timer.textContent = ((Date.now() - startTime) / 1000).toFixed(2);
+
+    timeoutId = setTimeout(() => {
+      runTimer();
+    },10);
+  }
+
   const board = new Board();
 
   let currentNum = 0;
+  let startTime;
+  let timeoutId;
   
   const btn = document.getElementById('btn');
   btn.addEventListener('click', () => {
     board.activate();
+
+    startTime = Date.now();
+    runTimer();
   });
 }
